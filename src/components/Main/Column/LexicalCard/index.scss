@@ -1,0 +1,19 @@
+/* LEXICAL CARD */
+.lexical__card {
+  background-color: lightgray;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.card {
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+.lexical__top {
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+}

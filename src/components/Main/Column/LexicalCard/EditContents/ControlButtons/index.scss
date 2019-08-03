@@ -1,0 +1,10 @@
+/* EDIT BUTTONS */
+
+ .edit__buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  button {
+    width: 140px;
+  }
+}
