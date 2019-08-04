@@ -2,11 +2,11 @@ import React from 'react';
 import {Col} from 'reactstrap';
 import './index.scss';
 import LexicalCard from './LexicalCard';
+import EditModal from '../EditModal';
 
-const Column = ({data, col, change}) => {
-  return (
+const Column = ({data, col, change, add, deleteCard}) => (
     <Col className="column">
-      <button> testetesrers</button>
+      <EditModal change = {add} col={col}/>
       {data.map((elem, i) => (
         <LexicalCard
           index={i}
@@ -16,10 +16,10 @@ const Column = ({data, col, change}) => {
           translate={elem.translate}
           change={change}
           col={col}
+          deleteCard={deleteCard}
         />
       ))}
     </Col>
   );
-};
 
 export default Column;

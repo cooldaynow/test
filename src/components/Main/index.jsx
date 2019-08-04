@@ -28,7 +28,13 @@ const Main = () => {
       ...newState,
     });
   };
-
+  const deleteCard = (col, index) => {
+    let newState = {...state};
+    newState[col].splice(index, 1);
+    setState({
+      ...newState,
+    });
+  };
   const getData = () => {
     let data = [...DATA];
     data.sort((a, b) => Math.random() - 0.5);
@@ -45,7 +51,14 @@ const Main = () => {
     <Container className="wrap__main">
       <Row>
         {columns.map((col, i) => (
-          <Column key={col + i} data={state[col]} col={col} change={change} />
+          <Column
+            key={col + i}
+            data={state[col]}
+            col={col}
+            change={change}
+            add={add}
+            deleteCard={deleteCard}
+          />
         ))}
       </Row>
     </Container>

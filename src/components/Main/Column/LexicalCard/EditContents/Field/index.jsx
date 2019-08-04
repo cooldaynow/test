@@ -1,17 +1,16 @@
 import React from 'react';
-import {AvField} from 'availity-reactstrap-validation';
+import {FormGroup, Label, Input} from 'reactstrap';
 
-const Field = ({name, handleChange, state, type}) => {
-  return (
-    <AvField
-      onChange={e => handleChange(e, name)}
-      name={name}
-      label={`Edit ${name}:`}
-      valid={state[name] ? true : false}
+const Field = ({name, onChange, type}) => (
+  <FormGroup>
+    <Label for={name}>Edit {name} : </Label>
+    <Input
+      id={name}
       type={type}
-      required
+      onChange={e => onChange(e, name)}
+      required="required"
     />
-  );
-};
+  </FormGroup>
+);
 
 export default Field;

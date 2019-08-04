@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {CardText, CardBody, CardTitle} from 'reactstrap';
 
 const CardContents = ({title, text, active, translate}) => (

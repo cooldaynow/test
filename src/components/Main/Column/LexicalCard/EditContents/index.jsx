@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import './index.scss';
-import {AvForm} from 'availity-reactstrap-validation';
 import Field from './Field';
 import ControlButtons from './ControlButtons';
+import {Form} from 'reactstrap';
 
 const EditContents = ({cancel, change, col, index}) => {
   const [state, setState] = useState({title: '', text: '', translate: ''});
@@ -11,7 +11,8 @@ const EditContents = ({cancel, change, col, index}) => {
     {name: 'text', type: 'textarea'},
     {name: 'translate', type: 'textarea'},
   ];
-  const handleSubmit = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
     change(state, col, index);
     cancel();
   };
@@ -20,18 +21,17 @@ const EditContents = ({cancel, change, col, index}) => {
     setState({...state, [elem]: e.target.value});
   };
   return (
-    <AvForm className="edit__contents" onValidSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       {FIELDS.map((field, i) => (
         <Field
           key={field.name + i}
           name={field.name}
-          state={state}
-          handleChange={handleChange}
+          onChange={handleChange}
           type={field.type}
         />
       ))}
       <ControlButtons cancel={cancel} />
-    </AvForm>
+    </Form>
   );
 };
 export default EditContents;
