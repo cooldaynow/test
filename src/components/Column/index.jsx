@@ -1,8 +1,8 @@
 import React from 'react';
 import {Col} from 'reactstrap';
 import './index.scss';
-import LexicalCard from './LexicalCard';
-import EditModal from '../EditModal';
+import LexicalCard from '../../containers/LexicalCard';
+import EditModal from '../../containers/EditModal';
 
 const Column = ({data, col, change, add, deleteCard}) => (
     <Col className="column">

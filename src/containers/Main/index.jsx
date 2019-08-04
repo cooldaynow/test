@@ -1,7 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Row, Container} from 'reactstrap';
 import {DATA} from '../../api';
-import Column from './Column';
+import {random} from '../../utils';
+import Column from '../../components/Column';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
@@ -12,7 +13,6 @@ const Main = () => {
     colTwo: [],
     colThree: [],
   });
-  const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
   const randomNumbersOfCards = useRef(random(3, 6));
   const add = (newCard, col) => {
     setState({

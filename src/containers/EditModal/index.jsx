@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Button, Modal, ModalHeader, ModalBody} from 'reactstrap';
-import EditContents from '../Column/LexicalCard/EditContents/';
+import { Modal, ModalHeader, ModalBody} from 'reactstrap';
+import EditContents from '../EditContents/';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlusSquare} from '@fortawesome/free-solid-svg-icons';
 import './index.scss';

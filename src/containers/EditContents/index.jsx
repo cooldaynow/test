@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import './index.scss';
-import Field from './Field';
-import ControlButtons from './ControlButtons';
 import {Form} from 'reactstrap';
+import './index.scss';
+import Field from '../../components/Field';
+import ControlButtons from '../../components/ControlButtons';
 
 const EditContents = ({cancel, change, col, index}) => {
   const [state, setState] = useState({title: '', text: '', translate: ''});

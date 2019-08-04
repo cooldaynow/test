@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Card, Button} from 'reactstrap';
+import {Card} from 'reactstrap';
 import './index.scss';
-import CardContents from './CardContents';
-import EditContents from './EditContents';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import {delay, random} from '../../utils';
+import CardContents from '../../components/CardContents';
+import EditButton from '../../components/EditButton';
+import EditContents from '../EditContents';
 
 const LexicalCard = ({
   title,
@@ -21,21 +21,6 @@ const LexicalCard = ({
   const dblclick = useRef(true);
   const editCard = () => setEdit(!edit);
   const cancel = () => setEdit(false);
-  const COLORS = [
-    '#FF8000',
-    '#FFC0CB',
-    '#7FFF00',
-    '#C8A2C8',
-    '#FFFF00',
-    '#808080',
-  ];
-
-  const delay = time => {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, time);
-    });
-  };
-  const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
   const showTranslate = e => {
     //Показываем перевод, только если не было двойного клика
@@ -53,10 +38,22 @@ const LexicalCard = ({
       });
   };
   useEffect(() => {
-    let randomColor = COLORS[random(0, COLORS.length)];
-    setColor({backgroundColor: randomColor});
+    const colorInitialization = () => {
+      const COLORS = [
+        '#FF8000',
+        '#FFC0CB',
+        '#7FFF00',
+        '#C8A2C8',
+        '#FFFF00',
+        '#808080',
+      ];
+      let randomColor = COLORS[random(0, COLORS.length)];
+      setColor({backgroundColor: randomColor});
+    };
+    colorInitialization();
     return () => (dblclick.current = false);
   }, []);
+
   const forcedShowText = e => setActive(false);
   const removeCard = (col, index) => {
     dblclick.current = false;
@@ -67,14 +64,18 @@ const LexicalCard = ({
   };
   return (
     <div className="lexical__wrap">
-      <Button onClick={editCard} className="lexical__button">
-        <FontAwesomeIcon icon={faEdit} />
-      </Button>
+      <EditButton editCard={editCard} />
       <div style={{width: '100%'}} onDoubleClick={() => removeCard(col, index)}>
         <Card
           className="lexical__card"
           style={color}
-          onClick={active ? e => forcedShowText(e) : e => showTranslate(e)}>
+          onClick={
+            edit
+              ? null
+              : active
+              ? e => forcedShowText(e)
+              : e => showTranslate(e)
+          }>
           {edit ? (
             <EditContents
               cancel={cancel}
