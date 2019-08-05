@@ -1,13 +1,12 @@
 import React from 'react';
 import {Container} from 'reactstrap';
-import './index.scss';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Main from '../Main';
 import Navigation from '../../components/Navigation';
 import Info from '../../components/Info';
+import './index.scss';
 
-const App = ({}) => {
-  return (
+const App = () =>( 
     <Router>
       <Navigation />
       <Container className="app__wrap" fluid>
@@ -16,6 +15,5 @@ const App = ({}) => {
       </Container>
     </Router>
   );
-};
 
 export default App;

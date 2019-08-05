@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Row, Container} from 'reactstrap';
+import {Row} from 'reactstrap';
 import {DATA} from '../../api';
 import {random} from '../../utils';
 import Column from '../../components/Column';

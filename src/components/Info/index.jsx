@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const Info = ({  }) => {
+const Info = () => {
   return (
     <div className='info__wrap'>
       <p> HELLO MOTHERFUCKERS </p>
