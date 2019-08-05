@@ -8,11 +8,11 @@ import './index.scss';
 
 const Main = () => {
   const [state, setState] = useState({
-    colOne: [],
-    colTwo: [],
-    colThree: [],
+    first: [],
+    second: [],
+    third: [],
   });
-  const columns = ['colOne', 'colTwo', 'colThree'];
+  const columns = ['first', 'second', 'third'];
   const randomNumbersOfCards = useRef(random(3, 6));
   const addCard = (newCard, col) => {
     setState({
@@ -38,10 +38,10 @@ const Main = () => {
   const getData = () => {
     let data = [...DATA];
     data.sort((a, b) => Math.random() - 0.5);
-    let colOne = data.splice(0, randomNumbersOfCards.current);
-    let colTwo = data.splice(0, Math.floor(data.length / 2));
-    let colThree = data;
-    setState({colOne, colTwo, colThree});
+    let first = data.splice(0, randomNumbersOfCards.current);
+    let second = data.splice(0, Math.floor(data.length / 2));
+    let third = data;
+    setState({first, second, third});
   };
 
   useEffect(() => {

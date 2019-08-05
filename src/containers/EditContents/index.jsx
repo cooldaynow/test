@@ -21,7 +21,7 @@ const EditContents = ({cancel, change, col, index, content}) => {
     setNewContent({...newContent, [elem]: e.target.value});
   };
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form className ='edit__form' onSubmit={handleSubmit}>
       {FIELDS.map((field, i) => (
         <Field
           key={field.name + i}
