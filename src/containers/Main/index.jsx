@@ -7,21 +7,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 
 const Main = () => {
-  const columns = ['colOne', 'colTwo', 'colThree'];
   const [state, setState] = useState({
     colOne: [],
     colTwo: [],
     colThree: [],
   });
+  const columns = ['colOne', 'colTwo', 'colThree'];
   const randomNumbersOfCards = useRef(random(3, 6));
-  const add = (newCard, col) => {
+  const addCard = (newCard, col) => {
     setState({
       ...state,
       [col]: [...state[col], newCard],
     });
   };
 
-  const change = (editCard, col, index) => {
+  const changeCard = (editCard, col, index) => {
     let newState = {...state};
     newState[col][index] = editCard;
     setState({
@@ -43,6 +43,7 @@ const Main = () => {
     let colThree = data;
     setState({colOne, colTwo, colThree});
   };
+
   useEffect(() => {
     console.log('main mount');
     getData();
@@ -55,8 +56,8 @@ const Main = () => {
             key={col + i}
             data={state[col]}
             col={col}
-            change={change}
-            add={add}
+            changeCard={changeCard}
+            addCard={addCard}
             deleteCard={deleteCard}
           />
         ))}

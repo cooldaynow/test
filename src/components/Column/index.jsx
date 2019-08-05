@@ -1,25 +1,23 @@
 import React from 'react';
 import {Col} from 'reactstrap';
-import './index.scss';
+import {sortByField} from '../../utils';
 import LexicalCard from '../../containers/LexicalCard';
 import EditModal from '../../containers/EditModal';
+import './index.scss';
 
-const Column = ({data, col, change, add, deleteCard}) => (
-    <Col className="column">
-      <EditModal change = {add} col={col}/>
-      {data.map((elem, i) => (
-        <LexicalCard
-          index={i}
-          key={i}
-          title={elem.title}
-          text={elem.text}
-          translate={elem.translate}
-          change={change}
-          col={col}
-          deleteCard={deleteCard}
-        />
-      ))}
-    </Col>
-  );
-
+const Column = ({data, col, changeCard, addCard, deleteCard}) => (
+  <Col sm={12} md={4} lg={4} className="column">
+    <EditModal change={addCard} col={col} />
+    {data.sort(sortByField('text')).map((elem, i) => (
+      <LexicalCard
+        index={i}
+        key={i}
+        content={data[i]}
+        changeCard={changeCard}
+        col={col}
+        deleteCard={deleteCard}
+      />
+    ))}
+  </Col>
+);
 export default Column;

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Form} from 'reactstrap';
-import './index.scss';
 import Field from '../../components/Field';
 import ControlButtons from '../../components/ControlButtons';
+import './index.scss';
 
-const EditContents = ({cancel, change, col, index}) => {
-  const [state, setState] = useState({title: '', text: '', translate: ''});
+const EditContents = ({cancel, change, col, index, content}) => {
+  const [newContent, setNewContent] = useState(content);
   const FIELDS = [
     {name: 'title', type: 'text'},
     {name: 'text', type: 'textarea'},
@@ -13,12 +13,12 @@ const EditContents = ({cancel, change, col, index}) => {
   ];
   const handleSubmit = e => {
     e.preventDefault();
-    change(state, col, index);
+    change(newContent, col, index);
     cancel();
   };
 
   const handleChange = (e, elem) => {
-    setState({...state, [elem]: e.target.value});
+    setNewContent({...newContent, [elem]: e.target.value});
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -28,6 +28,7 @@ const EditContents = ({cancel, change, col, index}) => {
           name={field.name}
           onChange={handleChange}
           type={field.type}
+          content={newContent}
         />
       ))}
       <ControlButtons cancel={cancel} />

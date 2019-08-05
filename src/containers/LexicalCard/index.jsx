@@ -1,39 +1,32 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Card} from 'reactstrap';
-import './index.scss';
-import {delay, random} from '../../utils';
+import {delay, random, isMobile} from '../../utils';
 import CardContents from '../../components/CardContents';
 import EditButton from '../../components/EditButton';
+import DeleteButton from '../../components/DeleteButton';
 import EditContents from '../EditContents';
+import './index.scss';
 
-const LexicalCard = ({
-  title,
-  text,
-  translate,
-  change,
-  col,
-  index,
-  deleteCard,
-}) => {
+const LexicalCard = ({content, col, index, deleteCard, changeCard}) => {
   const [edit, setEdit] = useState(false);
-  const [active, setActive] = useState(false);
+  const [click, setClick] = useState(false);
   const [color, setColor] = useState(null);
   const dblclick = useRef(true);
   const editCard = () => setEdit(!edit);
   const cancel = () => setEdit(false);
 
-  const showTranslate = e => {
-    //Показываем перевод, только если не было двойного клика
+  const showTranslate = () => {
+    //Не показываем перевод, если был двойной клик
     delay(300)
       .then(() => {
         if (dblclick.current) {
-          setActive(true);
+          setClick(true);
           return delay(2500);
         }
       })
       .then(() => {
         if (dblclick.current) {
-          setActive(false);
+          setClick(false);
         }
       });
   };
@@ -47,49 +40,42 @@ const LexicalCard = ({
         '#FFFF00',
         '#808080',
       ];
-      let randomColor = COLORS[random(0, COLORS.length)];
-      setColor({backgroundColor: randomColor});
+      let randomBackgroundColor = {
+        backgroundColor: COLORS[random(0, COLORS.length)],
+      };
+      setColor(randomBackgroundColor);
     };
     colorInitialization();
     return () => (dblclick.current = false);
   }, []);
 
-  const forcedShowText = e => setActive(false);
-  const removeCard = (col, index) => {
+  const forcedShowText = () => setClick(false);
+  const removeCard = () => {
     dblclick.current = false;
     deleteCard(col, index);
     setTimeout(() => {
       dblclick.current = true;
-    }, 500);
+    }, 300);
   };
   return (
     <div className="lexical__wrap">
       <EditButton editCard={editCard} />
-      <div style={{width: '100%'}} onDoubleClick={() => removeCard(col, index)}>
+      {isMobile && <DeleteButton edit={edit} removeCard={removeCard} />}
+      <div className="card__wrap" onDoubleClick={edit ? null : removeCard}>
         <Card
           className="lexical__card"
           style={color}
-          onClick={
-            edit
-              ? null
-              : active
-              ? e => forcedShowText(e)
-              : e => showTranslate(e)
-          }>
+          onClick={edit ? null : click ? forcedShowText : showTranslate}>
           {edit ? (
             <EditContents
               cancel={cancel}
-              change={change}
+              change={changeCard}
               col={col}
               index={index}
+              content={content}
             />
           ) : (
-            <CardContents
-              active={active}
-              title={title}
-              text={text}
-              translate={translate}
-            />
+            <CardContents click={click} content={content} />
           )}
         </Card>
       </div>
