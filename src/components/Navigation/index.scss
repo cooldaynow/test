@@ -1,0 +1,10 @@
+.nav__wrap {
+  height:80px;
+}
+.link {
+  transition: all .2s linear;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}

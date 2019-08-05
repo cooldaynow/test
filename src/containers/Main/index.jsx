@@ -49,7 +49,6 @@ const Main = () => {
     getData();
   }, []);
   return (
-    <Container className="wrap__main">
       <Row>
         {columns.map((col, i) => (
           <Column
@@ -62,7 +61,6 @@ const Main = () => {
           />
         ))}
       </Row>
-    </Container>
   );
 };
 export default Main;
