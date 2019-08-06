@@ -1,5 +1,12 @@
 .nav__wrap {
   height:80px;
+  justify-content:flex-start;
+}
+.nav__links {
+  display: flex;
+  width:200px;
+  margin-right:10px;
+  justify-content: space-around;
 }
 .link {
   transition: all .2s linear;

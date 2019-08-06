@@ -6,7 +6,9 @@ import Navigation from '../../components/Navigation';
 import Info from '../../components/Info';
 import './index.scss';
 
-const App = () =>( 
+const App = () =>{ 
+ 
+  return(
     <Router>
       <Navigation />
       <Container className="app__wrap" fluid>
@@ -14,6 +16,8 @@ const App = () =>(
         <Route path="/Info" component={Info} />
       </Container>
     </Router>
+
   );
+}
 
 export default App;
