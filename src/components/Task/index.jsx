@@ -4,11 +4,11 @@ import data from '../../api/text.js';
 import {random} from '../../utils';
 
 const Task = () => (
-  <div className="task__wrap">
+  <div className="points__wrap">
     <h4>Задание</h4>
     <ul>
       {data.map((paragraph, i) => (
-        <li className="task__paragraph" key={random(0, 999) * i}>
+        <li className="points__paragraph" key={random(0, 999) * i}>
           {paragraph.text}
           {paragraph.hasOwnProperty('subText')
             ? paragraph.subText.map(subText => (

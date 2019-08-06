@@ -49,7 +49,7 @@ const Main = () => {
     getData();
   }, []);
   return (
-      <Row>
+      <Row className = 'test__wrap'>
         {columns.map((col, i) => (
           <Column
             key={col + i}

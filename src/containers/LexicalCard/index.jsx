@@ -39,6 +39,12 @@ const LexicalCard = ({content, col, index, deleteCard, changeCard}) => {
         '#C8A2C8',
         '#FFFF00',
         '#808080',
+        '#DC143C',
+        'violet',
+        'green',
+        'yellow',
+        'orange',
+        'tomato',
       ];
       let randomBackgroundColor = {
         backgroundColor: COLORS[random(0, COLORS.length)],

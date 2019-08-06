@@ -1,14 +1,12 @@
-.task__wrap {
-
+.points__wrap {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   h4 {
-
-    margin:10px;
+    text-align: center;
+    margin: 10px;
   }
 }
-.task__paragraph {
-  margin-bottom:20px;
+.points__paragraph {
+  margin-bottom: 20px;
 }

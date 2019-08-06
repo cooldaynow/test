@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import {Navbar} from 'reactstrap';
 import './index.scss';
@@ -14,6 +14,14 @@ const Navigation = () => {
           <Link className="link" to="/Info" title="Go to Information">
             Information
           </Link>
+          <a
+            className="link"
+            href="https://github.com/cooldaynow/test"
+            title="Link to GitHub"
+            target="_blank"
+            rel="noopener noreferrer">
+            GitHub
+          </a>
         </div>
       </Navbar>
     </>
