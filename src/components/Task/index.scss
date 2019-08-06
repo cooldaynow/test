@@ -1,0 +1,14 @@
+.task__wrap {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h4 {
+
+    margin:10px;
+  }
+}
+.task__paragraph {
+  margin-bottom:20px;
+}
