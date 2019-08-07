@@ -1,12 +1,8 @@
-.points__wrap {
-  display: flex;
-  flex-direction: column;
+.points__header {
+  text-align: center;
   width: 100%;
-  h4 {
-    text-align: center;
-    margin: 10px;
-  }
+  font-size: 26px;
 }
 .points__paragraph {
-  margin-bottom: 20px;
+  margin-top: 2em;
 }

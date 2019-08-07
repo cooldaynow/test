@@ -4,8 +4,8 @@ import data from '../../api/text.js';
 import {random} from '../../utils';
 
 const Task = () => (
-  <div className="points__wrap">
-    <h4>Задание</h4>
+  <>
+    <h2 className = 'points__header'>Задание</h2>
     <ul>
       {data.map((paragraph, i) => (
         <li className="points__paragraph" key={random(0, 999) * i}>
@@ -20,7 +20,7 @@ const Task = () => (
         </li>
       ))}
     </ul>
-  </div>
+  </>
 );
 
 export default Task;

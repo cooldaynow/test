@@ -1,15 +1,20 @@
 .info__wrap {
-  width: 100%;
-  min-height: 100vh;
-}
-.info__col {
+  min-height: calc(100vh - 80px);
+  justify-content: center;
+  align-items: center;
   display: flex;
   flex-direction: column;
+  h1,
   h2 {
-    margin: 50px 0;
-    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 1.72em;
   }
+  font: 21px/1.58 Geneva, Arial, Helvetica, sans-serif;
+}
+.info__header {
+  font-size: 34px;
+  text-align: center;
 }
 .info__body {
-  width: 100%;
+  max-width: 728px;
 }

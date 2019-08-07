@@ -6,18 +6,14 @@ import Navigation from '../../components/Navigation';
 import Info from '../../components/Info';
 import './index.scss';
 
-const App = () =>{ 
- 
-  return(
-    <Router>
-      <Navigation />
-      <Container className="app__wrap" fluid>
-        <Route exact path="/" component={Main} />
-        <Route path="/Info" component={Info} />
-      </Container>
-    </Router>
-
-  );
-}
+const App = () => (
+  <Router>
+    <Navigation />
+    <Container className="app__wrap" fluid>
+      <Route exact path="/" component={Main} />
+      <Route path="/Info" component={Info} />
+    </Container>
+  </Router>
+);
 
 export default App;

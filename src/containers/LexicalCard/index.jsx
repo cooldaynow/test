@@ -39,7 +39,7 @@ const LexicalCard = ({content, col, index, deleteCard, changeCard}) => {
         '#C8A2C8',
         '#FFFF00',
         '#808080',
-        '#DC143C',
+        '#FF4364',
         'violet',
         'green',
         'yellow',

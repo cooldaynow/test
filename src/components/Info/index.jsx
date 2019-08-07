@@ -4,17 +4,15 @@ import Task from '../Task';
 import Additionally from '../Additionally';
 import './index.scss';
 
-const Info = () => {
-  return (
-    <Row className="info__wrap">
-      <Col className="info__col">
-        <h2>"Разговорная лексика" </h2>
-        <Row className="info__body">
-          <Task />
-          <Additionally />
-        </Row>
-      </Col>
-    </Row>
-  );
-};
+const Info = () => (
+  <Row >
+    <Col className="info__wrap">
+      <h1 className = 'info__header'>"Разговорная лексика" </h1>
+      <Row className="info__body">
+        <Task />
+        <Additionally />
+      </Row>
+    </Col>
+  </Row>
+);
 export default Info;

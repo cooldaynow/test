@@ -1,16 +1,26 @@
-.nav__wrap {
-  height:80px;
-  justify-content:flex-start;
+.nav__height {
+  min-height: 80px;
 }
-.nav__links {
+.nav__brand {
+  color: white;
+  transition:all .2s linear;
+  &:hover{
+    color:#007bff !important;
+  }
+}
+.links__wrap {
+  width: 200px;
   display: flex;
-  width:300px;
-  margin-right:10px;
   justify-content: space-around;
+  .mobile {
+    width: 100%;
+    flex-direction: column;
+  }
 }
+
 .link {
-  transition: all .2s linear;
-  font-size:20px;
+  transition: all 0.2s linear;
+  font-size: 20px;
   &:hover {
     text-decoration: none;
   }

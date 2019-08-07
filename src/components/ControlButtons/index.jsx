@@ -3,7 +3,7 @@ import {Button} from 'reactstrap';
 import './index.scss';
 
 const ControlButtons = ({cancel}) => (
-  <div className="edit__buttons">
+  <div className="control__buttons__wrap">
     <Button color="primary" onClick={cancel}>
       Cancel!
     </Button>
