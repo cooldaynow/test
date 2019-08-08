@@ -36,16 +36,15 @@ const Main = () => {
     });
   };
   const getData = () => {
-    let data = [...DATA];
-    data.sort((a, b) => Math.random() - 0.5);
-    let first = data.splice(0, randomNumbersOfCards.current);
-    let second = data.splice(0, Math.floor(data.length / 2));
-    let third = data;
+    const data = [...DATA];
+    data.sort(() => Math.random() - 0.5);
+    const first = data.splice(0, randomNumbersOfCards.current);
+    const second = data.splice(0, Math.floor(data.length / 2));
+    const third = data;
     setState({first, second, third});
   };
 
   useEffect(() => {
-    console.log('main mount');
     getData();
   }, []);
   return (

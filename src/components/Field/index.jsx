@@ -1,6 +1,6 @@
 import React from 'react';
 import {FormGroup, Label, Input} from 'reactstrap';
-
+import './index.scss';
 const Field = ({
   name,
   onChange,
@@ -8,8 +8,8 @@ const Field = ({
   content = {title: '', text: '', translate: ''},
 }) => (
   <FormGroup>
-    <Label htmlFor={name}>
-      {name.slice(0, 1).toUpperCase() + name.slice(1)} :{' '}
+    <Label htmlFor={name} className="field__header">
+      {name}
     </Label>
     <Input
       id={name}

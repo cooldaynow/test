@@ -4,8 +4,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash} from '@fortawesome/free-solid-svg-icons';
 import './index.scss';
 
-const DeleteButton = ({edit, removeCard}) => (
-  <Button className="delete__button" onClick={edit ? null : removeCard}>
+const DeleteButton = ({removeCard}) => (
+  <Button className="delete__button" onClick={removeCard}>
     <FontAwesomeIcon icon={faTrash} />
   </Button>
 );

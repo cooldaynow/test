@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Card} from 'reactstrap';
 import {delay, random, isMobile} from '../../utils';
+import colors from '../../api/colors';
 import CardContents from '../../components/CardContents';
 import EditButton from '../../components/EditButton';
 import DeleteButton from '../../components/DeleteButton';
@@ -11,7 +12,7 @@ const LexicalCard = ({content, col, index, deleteCard, changeCard}) => {
   const [edit, setEdit] = useState(false);
   const [click, setClick] = useState(false);
   const [color, setColor] = useState(null);
-  const dblclick = useRef(true);
+  const isDoubleClick = useRef(true);
   const editCard = () => setEdit(!edit);
   const cancel = () => setEdit(false);
 
@@ -19,54 +20,40 @@ const LexicalCard = ({content, col, index, deleteCard, changeCard}) => {
     //Не показываем перевод, если был двойной клик
     delay(300)
       .then(() => {
-        if (dblclick.current) {
+        if (isDoubleClick.current) {
           setClick(true);
           return delay(2500);
         }
       })
       .then(() => {
-        if (dblclick.current) {
+        if (isDoubleClick.current) {
           setClick(false);
         }
       });
   };
   useEffect(() => {
     const colorInitialization = () => {
-      const COLORS = [
-        '#FF8000',
-        '#FFC0CB',
-        '#7FFF00',
-        '#C8A2C8',
-        '#FFFF00',
-        '#808080',
-        '#FF4364',
-        'violet',
-        'green',
-        'yellow',
-        'orange',
-        'tomato',
-      ];
       let randomBackgroundColor = {
-        backgroundColor: COLORS[random(0, COLORS.length)],
+        backgroundColor: colors[random(0, colors.length)],
       };
       setColor(randomBackgroundColor);
     };
     colorInitialization();
-    return () => (dblclick.current = false);
+    return () => (isDoubleClick.current = false);
   }, []);
 
   const forcedShowText = () => setClick(false);
   const removeCard = () => {
-    dblclick.current = false;
+    isDoubleClick.current = false;
     deleteCard(col, index);
     setTimeout(() => {
-      dblclick.current = true;
+      isDoubleClick.current = true;
     }, 300);
   };
   return (
     <div className="lexical__wrap">
       <EditButton editCard={editCard} />
-      {isMobile && <DeleteButton edit={edit} removeCard={removeCard} />}
+      {isMobile && <DeleteButton  removeCard={edit ? null :removeCard} />}
       <div className="card__wrap" onDoubleClick={edit ? null : removeCard}>
         <Card
           className="lexical__card"

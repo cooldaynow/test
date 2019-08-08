@@ -7,7 +7,6 @@ import './index.scss';
 const Info = () => (
   <Row >
     <Col className="info__wrap">
-      <h1 className = 'info__header'>"Разговорная лексика" </h1>
       <Row className="info__body">
         <Task />
         <Additionally />
